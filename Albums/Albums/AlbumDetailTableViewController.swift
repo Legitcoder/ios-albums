@@ -87,6 +87,20 @@ class AlbumDetailTableViewController: UITableViewController {
     }
     */
     
+    func updateViews() {
+        if let album = album, isViewLoaded {
+            title = album.name
+            albumTextField.text = album.name
+            genresTextField.text = album.genres.joined(separator: ", ")
+            artistTextField.text = album.artist
+            let coverArtUrlStrings = album.coverArt.map({ $0.absoluteString } )
+            coverUrlsTextField.text = coverArtUrlStrings.joined(separator: ", ")
+            tempSongs = album.songs
+        } else {
+            title = "New Album"
+        }
+    }
+    
     
     @IBAction func saveAlbum(_ sender: Any) {
     }
@@ -98,7 +112,11 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var coverUrlsTextField: UITextField!
     
     var albumController: AlbumController?
-    var album: Album?
+    var album: Album? {
+        didSet {
+            updateViews()
+        }
+    }
     var tempSongs: [Song] = []
     
 
