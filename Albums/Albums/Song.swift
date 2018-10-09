@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
     
-    enum SongCodingKeys: String, CodingKey {
+    enum SongCodingKeys: String, CodingKey, Equatable {
         case id
         case name
         case duration
         
-        enum NameCodingKeys: String, CodingKey {
+        enum NameCodingKeys: String, CodingKey, Equatable {
             case title
         }
         
-        enum DurationCodingKeys: String, CodingKey {
+        enum DurationCodingKeys: String, CodingKey, Equatable {
             case duration
         }
     }

@@ -9,13 +9,13 @@
 import Foundation
 
 
-struct Album: Codable {
-    enum AlbumCodingKeys: String, CodingKey {
+struct Album: Codable, Equatable {
+    enum AlbumCodingKeys: String, CodingKey, Equatable {
         case artist
         case coverArt
         
         
-        enum CoverArtCodingKeys: String, CodingKey {
+        enum CoverArtCodingKeys: String, CodingKey, Equatable {
             case url
         }
         
@@ -24,6 +24,15 @@ struct Album: Codable {
         case name
         case songs
         
+    }
+    
+    init(id: String = UUID().uuidString, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        self.id = id
+        self.name = name
+        self.artist = artist
+        self.genres = genres
+        self.coverArt = coverArt
+        self.songs = songs
     }
     
     func encode(to encoder: Encoder) throws {
