@@ -41,10 +41,12 @@ struct Album: Codable, Equatable {
         try container.encode(artist, forKey: .artist)
         try container.encode(genres, forKey: .genres)
         try container.encode(name, forKey: .name)
-        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        var coverArtsContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
         
-        let coverArtStrings = coverArt.map( { $0.absoluteString })
-        try coverArtContainer.encode(coverArtStrings)
+        for urls in coverArt {
+            var coverArtContainer = coverArtsContainer.nestedContainer(keyedBy: AlbumCodingKeys.CoverArtCodingKeys.self)
+            try coverArtContainer.encode(urls.absoluteString, forKey: .url)
+        }
         try container.encode(songs, forKey: .songs)
     }
     

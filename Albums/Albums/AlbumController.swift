@@ -72,6 +72,8 @@ class AlbumController {
             do {
                 let albumsObject = try JSONDecoder().decode([String: Album].self, from: data)
                 self.albums = albumsObject.map({ $0.value })
+                print("Getting Albums Successful!")
+                completion(nil)
             } catch {
                 NSLog("Error decoding albums \(error)")
                 completion(error)

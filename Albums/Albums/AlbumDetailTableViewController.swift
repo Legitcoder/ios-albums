@@ -97,5 +97,9 @@ class AlbumDetailTableViewController: UITableViewController {
     @IBOutlet weak var genresTextField: UITextField!
     @IBOutlet weak var coverUrlsTextField: UITextField!
     
+    var albumController: AlbumController?
+    var album: Album?
+    var tempSongs: [Song] = []
+    
 
 }

@@ -34,10 +34,10 @@ struct Song: Codable, Equatable {
         var container = encoder.container(keyedBy: SongCodingKeys.self)
         try container.encode(id, forKey: .id)
         
-        var nameContainer = encoder.container(keyedBy: SongCodingKeys.NameCodingKeys.self)
+        var nameContainer = container.nestedContainer(keyedBy: SongCodingKeys.NameCodingKeys.self, forKey: .name)
         try nameContainer.encode(name, forKey: .title)
         
-        var durationContainer = encoder.container(keyedBy: SongCodingKeys.DurationCodingKeys.self)
+        var durationContainer = container.nestedContainer(keyedBy: SongCodingKeys.DurationCodingKeys.self, forKey: .duration)
         
         try durationContainer.encode(duration, forKey: .duration)
     }

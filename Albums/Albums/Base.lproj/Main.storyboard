@@ -41,7 +41,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Kyb-6l-Wwz" kind="show" id="vTv-XE-v4l"/>
+                                    <segue destination="Kyb-6l-Wwz" kind="show" identifier="ViewAbum" id="vTv-XE-v4l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +51,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="mRj-WE-xv0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cnL-AD-alJ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cnL-AD-alJ">
+                            <connections>
+                                <segue destination="Kyb-6l-Wwz" kind="show" identifier="AddAlbum" id="vmb-Xc-U3k"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvg-Ub-6nV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -134,6 +138,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addSongButton" destination="6No-s7-xy4" id="YgA-ZO-byq"/>
                                     <outlet property="durationTextField" destination="Huv-4u-ZbD" id="Uq5-hH-4uG"/>
                                     <outlet property="songTextField" destination="Fth-zP-cdg" id="I0x-da-Esk"/>
                                 </connections>
@@ -181,4 +186,7 @@
             <point key="canvasLocation" x="-156" y="104.7976011994003"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vTv-XE-v4l"/>
+    </inferredMetricsTieBreakers>
 </document>
