@@ -22,6 +22,8 @@ class AlbumController {
             //Mimicking getting JSON from API
             let albumData = try Data(contentsOf: url)
             let album = try JSONDecoder().decode(Album.self, from: albumData)
+            
+            print("Success")
         } catch {
             NSLog("Error decoding Album: \(error)")
         }
