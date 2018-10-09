@@ -17,24 +17,6 @@ class AlbumController {
             NSLog("JSON file doesn't exist")
             return
         }
-        
-        func createAlbum(name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
-            let album = Album(name: name, artist: artist, genres: genres, coverArt: coverArt, songs: songs)
-            albums.append(album)
-            put(album: album)
-        }
-        
-        func update(album: Album, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
-            guard let index = albums.index(of: album) else { return }
-            var currentAlbum = albums[index]
-            currentAlbum.name = name
-            currentAlbum.artist = artist
-            currentAlbum.coverArt = coverArt
-            currentAlbum.genres = genres
-            currentAlbum.songs = songs
-            put(album: currentAlbum)
-        }
-        
         do {
             //Mimicking getting JSON from API
             let albumData = try Data(contentsOf: url)
@@ -45,6 +27,30 @@ class AlbumController {
             NSLog("Error decoding Album: \(error)")
         }
     }
+        
+    func createAlbum(name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        let album = Album(name: name, artist: artist, genres: genres, coverArt: coverArt, songs: songs)
+        albums.append(album)
+        put(album: album)
+    }
+    
+    func createSong(name: String, duration: String) -> Song {
+        return Song(name: name, duration: duration)
+    }
+    
+    func update(album: Album, name: String, artist: String, genres: [String], coverArt: [URL], songs: [Song]) {
+        guard let index = albums.index(of: album) else { return }
+        var currentAlbum = albums[index]
+        currentAlbum.name = name
+        currentAlbum.artist = artist
+        currentAlbum.coverArt = coverArt
+        currentAlbum.genres = genres
+        currentAlbum.songs = songs
+        put(album: currentAlbum)
+    }
+        
+
+
     
     
     func getAlbums(completion: @escaping (Error?) -> Void  = { _ in }) {
@@ -76,7 +82,7 @@ class AlbumController {
     }
     
     func put(album: Album) {
-        let requestURl = baseURL.appendingPathExtension(String(album.id)).appendingPathExtension("json")
+        let requestURl = baseURL.appendingPathComponent("\(album.id)").appendingPathExtension("json")
         
         var request = URLRequest(url: requestURl)
         request.httpMethod = "PUT"
@@ -84,8 +90,15 @@ class AlbumController {
         do {
             request.httpBody = try JSONEncoder().encode(album)
         } catch {
-            NSLog("Error encoding album and putting it to firebase: \(album)")
+            NSLog("Error encoding the album: \(album)")
         }
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                NSLog("Error saving album to firebase: \(error)")
+            }
+            print("Put Successful!")
+        }.resume()
     }
     
     

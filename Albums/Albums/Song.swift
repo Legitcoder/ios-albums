@@ -10,6 +10,12 @@ import Foundation
 
 struct Song: Codable, Equatable {
     
+    init(id: String = UUID().uuidString, name: String, duration: String) {
+        self.id = id
+        self.name = name
+        self.duration = duration
+    }
+    
     enum SongCodingKeys: String, CodingKey, Equatable {
         case id
         case name
