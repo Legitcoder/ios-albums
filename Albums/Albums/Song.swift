@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Decodable {
+struct Song: Codable {
     
     enum SongCodingKeys: String, CodingKey {
         case id
@@ -24,6 +24,17 @@ struct Song: Decodable {
         }
     }
     
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SongCodingKeys.self)
+        try container.encode(id, forKey: .id)
+        
+        var nameContainer = encoder.container(keyedBy: SongCodingKeys.NameCodingKeys.self)
+        try nameContainer.encode(name, forKey: .title)
+        
+        var durationContainer = encoder.container(keyedBy: SongCodingKeys.DurationCodingKeys.self)
+        
+        try durationContainer.encode(duration, forKey: .duration)
+    }
     
     
     init(from decoder: Decoder) throws {

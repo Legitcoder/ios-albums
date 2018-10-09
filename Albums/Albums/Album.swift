@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Album: Decodable {
+struct Album: Codable {
     enum AlbumCodingKeys: String, CodingKey {
         case artist
         case coverArt
@@ -24,6 +24,19 @@ struct Album: Decodable {
         case name
         case songs
         
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AlbumCodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(artist, forKey: .artist)
+        try container.encode(genres, forKey: .genres)
+        try container.encode(name, forKey: .name)
+        var coverArtContainer = container.nestedUnkeyedContainer(forKey: .coverArt)
+        
+        let coverArtStrings = coverArt.map( { $0.absoluteString })
+        try coverArtContainer.encode(coverArtStrings)
+        try container.encode(songs, forKey: .songs)
     }
     
     
