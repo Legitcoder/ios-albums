@@ -30,6 +30,15 @@ struct Album: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AlbumCodingKeys.self)
         let artist = try container.decode(String.self, forKey: .artist)
+        let id = try container.decode(String.self, forKey: .id)
+        let name = try container.decode(String.self, forKey: .name)
+        var genreContainer = try container.nestedUnkeyedContainer(forKey: .genres)
+        var genres: [String] = []
+        while !genreContainer.isAtEnd {
+            let genre = try genreContainer.decode(String.self)
+            genres.append(genre)
+            
+        }
         var coverArtContainer = try container.nestedUnkeyedContainer(forKey: .coverArt)
         
         
@@ -42,11 +51,28 @@ struct Album: Decodable {
             }
         }
         
+        var songContainer = try container.nestedUnkeyedContainer(forKey: .songs)
+        var songs: [Song] = []
+        
+        while !songContainer.isAtEnd {
+            let song = try songContainer.decode(Song.self)
+            songs.append(song)
+        }
+        
+        
+        self.id = id
+        self.name = name
         self.coverArt = artUrls
         self.artist = artist
+        self.genres = genres
+        self.songs = songs
     }
     
     
+    var id: String
+    var name: String
     var artist: String
+    var genres: [String]
     var coverArt: [URL]
+    var songs: [Song]
 }

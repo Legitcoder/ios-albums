@@ -16,6 +16,8 @@
 		A11DFEE6216C275B0098EC9A /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11DFEE5216C275B0098EC9A /* SongTableViewCell.swift */; };
 		A11DFEE8216C290A0098EC9A /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11DFEE7216C290A0098EC9A /* Album.swift */; };
 		A11DFEEA216C4F2C0098EC9A /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11DFEE9216C4F2C0098EC9A /* Song.swift */; };
+		A11DFEEC216C6C0D0098EC9A /* exampleAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = A11DFEEB216C6C0D0098EC9A /* exampleAlbum.json */; };
+		A11DFEEE216C6C4D0098EC9A /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11DFEED216C6C4D0098EC9A /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A11DFEE5216C275B0098EC9A /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		A11DFEE7216C290A0098EC9A /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		A11DFEE9216C4F2C0098EC9A /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		A11DFEEB216C6C0D0098EC9A /* exampleAlbum.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleAlbum.json; path = ../../exampleAlbum.json; sourceTree = "<group>"; };
+		A11DFEED216C6C4D0098EC9A /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +69,10 @@
 				A11DFECF216C1E710098EC9A /* AppDelegate.swift */,
 				A11DFED3216C1E710098EC9A /* Main.storyboard */,
 				A11DFEE7216C290A0098EC9A /* Album.swift */,
+				A11DFEED216C6C4D0098EC9A /* AlbumController.swift */,
 				A11DFEE9216C4F2C0098EC9A /* Song.swift */,
 				A11DFEE5216C275B0098EC9A /* SongTableViewCell.swift */,
+				A11DFEEB216C6C0D0098EC9A /* exampleAlbum.json */,
 				A11DFEE1216C1EC90098EC9A /* AlbumsTableViewController.swift */,
 				A11DFEE3216C1EF30098EC9A /* AlbumDetailTableViewController.swift */,
 				A11DFED6216C1E720098EC9A /* Assets.xcassets */,
@@ -136,6 +142,7 @@
 			files = (
 				A11DFEDA216C1E720098EC9A /* LaunchScreen.storyboard in Resources */,
 				A11DFED7216C1E720098EC9A /* Assets.xcassets in Resources */,
+				A11DFEEC216C6C0D0098EC9A /* exampleAlbum.json in Resources */,
 				A11DFED5216C1E710098EC9A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +158,7 @@
 				A11DFEE6216C275B0098EC9A /* SongTableViewCell.swift in Sources */,
 				A11DFED0216C1E710098EC9A /* AppDelegate.swift in Sources */,
 				A11DFEE4216C1EF30098EC9A /* AlbumDetailTableViewController.swift in Sources */,
+				A11DFEEE216C6C4D0098EC9A /* AlbumController.swift in Sources */,
 				A11DFEE2216C1EC90098EC9A /* AlbumsTableViewController.swift in Sources */,
 				A11DFEE8216C290A0098EC9A /* Album.swift in Sources */,
 			);
